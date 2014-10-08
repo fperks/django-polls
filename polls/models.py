@@ -19,6 +19,12 @@ class Question(models.Model):
         """
         return self.publish_date >= timezone.now() - datetime.timedelta(days=1)
 
+    # for administration panel
+    was_published_recently.admin_order_field = 'publish_date'
+    was_published_recently.boolean = True
+    was_published_recently.short_description = 'Published Recently?'
+
+
     def __str__(self):
         return self.question_text
 
